@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ******** <*******************.fr>          +#+  +:+       +#+        */
+/*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 13:15:07 by ********          #+#    #+#             */
-/*   Updated: 2025/01/26 10:53:12 by ********         ###   ########.fr       */
+/*   Updated: 2025/03/21 16:28:10 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ char	*get_next_line(int fd)
 		return (NULL);
 	while (nb_read)
 	{
-		line = ft_strjoin(line, (const char *)buffer);
+		line = ft_strjoin_gnl(line, (const char *)buffer);
 		if (ft_strchr(line, '\n'))
 			break ;
 		nb_read = read(fd, buffer, BUFFER_SIZE);

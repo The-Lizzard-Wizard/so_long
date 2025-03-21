@@ -1,8 +1,8 @@
 NAME = so_long
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g3
-SRC = 
-DEPS = so_long.h
+SRC = so_long.c
+DEPS = inc/so_long.h
 ODIR = obj/
 OBJ = $(SRC:%.c=$(ODIR)%.o)
 LIBFT_DIR = ./libft
@@ -19,7 +19,7 @@ $(NAME) : $(OBJ) $(LIBFT)
 libft_comp :
 	@$(MAKE) -s -C $(LIBFT_DIR)
 
-$(ODIR)%.o: %.c Makefile $(DEPS) | $(ODIR)
+$(ODIR)%.o: src/%.c Makefile $(DEPS) | $(ODIR)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(ODIR):

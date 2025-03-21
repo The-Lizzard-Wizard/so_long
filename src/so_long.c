@@ -6,8 +6,14 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 15:12:53 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/03/21 11:58:28 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/03/21 13:13:00 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../inc/so_long.h"
+#include <stdlib.h>
+
+int	main()
+{
+	return (EXIT_SUCCESS);
+}

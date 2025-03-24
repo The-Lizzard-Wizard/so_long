@@ -1,7 +1,7 @@
 NAME = so_long
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g3
-SRC = so_long.c pars.c
+SRC = so_long.c pars.c pars_2.c
 DEPS = inc/so_long.h
 ODIR = obj/
 OBJ = $(SRC:%.c=$(ODIR)%.o)

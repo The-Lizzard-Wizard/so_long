@@ -6,7 +6,7 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:24:45 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/03/24 16:19:15 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/03/24 17:06:44 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ int		check_map(t_game *game);
 int		check_size(t_game *game);
 void	init_texture_id(t_game *game);
 int		is_wall(t_game *game, size_t l, size_t c);
+int		check_wall(t_game *game);
 
 #endif

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pars.c                                             :+:      :+:    :+:   */
+/*   map_pars.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 14:54:29 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/03/24 16:45:28 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/03/24 17:43:33 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,17 +61,22 @@ int		check_size(t_game *game)
 	return (1);
 }
 
-int		check_wall(t_game *game)
+void	init_texture_id(t_game *game)
 {
-	(void)game;
-	return (0);
+	game->st_map->id_wall[0] = '1';
+	game->st_map->id_wall[1] = '2';
+	game->st_map->id_wall[2] = '\0';
+	game->st_map->id_floor[0] = '0';
+	game->st_map->id_floor[1] = '\0';
 }
 
 int		check_map(t_game *game)
 {
+	init_texture_id(game);
 	if (!check_size(game))
 		return (0);
-	//if (!check_wall(game))
-	//	return (0);
+	if (!check_wall(game))
+		return (0);
+	ft_printf("%c\n", game->st_map->map[2][2]);
 	return (1);
 }

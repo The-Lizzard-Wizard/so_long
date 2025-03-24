@@ -6,7 +6,7 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 14:54:29 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/03/24 14:04:50 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/03/24 16:21:53 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_map	*pars(char **argv)
 	return (st_map);
 }
 
-int		check_size(t_map *st_map)
+int		check_size(t_game *game)
 {
 	size_t	l;
 	size_t	c;
@@ -47,57 +47,31 @@ int		check_size(t_map *st_map)
 
 	l = 0;
 	size = 0;
-	while (st_map->map[l])
+	while (game->st_map->map[l])
 	{
 		c = 0;
-		while (st_map->map[l][c])
+		while (game->st_map->map[l][c])
 			c++;
-		if (c != ft_strlen(st_map->map[0]))
+		if (c != ft_strlen(game->st_map->map[0]))
 			return (0);
 		l++;
 	}
-	st_map->size_l = l;
-	st_map->size_c = c;
+	game->st_map->size_l = l;
+	game->st_map->size_c = c;
 	return (1);
 }
 
-int		check_wall(t_map *st_map)
+int		check_wall(t_game *game)
 {
-	size_t	l;
-	size_t	c;
-
-	l = 0;
-	c = 0;
-	while (st_map->map[l])
-	{
-		c = 0;
-		while (st_map->map[l][c])
-		{
-			if (l == 1 || l == st_map->size_l)
-			{
-				if (is_wall(st_map, l, c) != 1)
-					return (0);
-			}
-			c++;
-		}
-		l++;
-	}
+	(void)game;
 	return (0);
 }
 
-int		check_map(t_map *st_map)
+int		check_map(t_game *game)
 {
-	if (!check_size(st_map))
+	if (!check_size(game))
 		return (0);
-	if (!check_wall(st_map))
+	if (!check_wall(game))
 		return (0);
 	return (1);
-}
-
-void	init_map(t_map *st_map)
-{
-	st_map->id_wall[0] = '1';
-	st_map->id_wall[1] = '\0';
-	st_map->id_floor[0] = '0';
-	st_map->id_floor[1] = '\0';
 }

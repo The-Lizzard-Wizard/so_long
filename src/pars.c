@@ -6,7 +6,7 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 14:54:29 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/03/24 12:04:13 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/03/24 14:04:50 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,24 @@ int		check_size(t_map *st_map)
 
 int		check_wall(t_map *st_map)
 {
-	while (st_map->map)
+	size_t	l;
+	size_t	c;
+
+	l = 0;
+	c = 0;
+	while (st_map->map[l])
 	{
+		c = 0;
+		while (st_map->map[l][c])
+		{
+			if (l == 1 || l == st_map->size_l)
+			{
+				if (is_wall(st_map, l, c) != 1)
+					return (0);
+			}
+			c++;
+		}
+		l++;
 	}
 	return (0);
 }
@@ -73,21 +89,15 @@ int		check_map(t_map *st_map)
 {
 	if (!check_size(st_map))
 		return (0);
-	// if (!check_wall(st_map))
-	// 	return (0);
+	if (!check_wall(st_map))
+		return (0);
 	return (1);
 }
 
-void	print_map(t_map *st_map)
+void	init_map(t_map *st_map)
 {
-	size_t	l;
-
-	l = 0;
-	while (st_map->map[l])
-	{
-		ft_printf("%s\n", st_map->map[l]);
-		l++;
-	}
-	ft_printf("size l : %i\n", st_map->size_l);
-	ft_printf("size c : %i\n", st_map->size_c);
+	st_map->id_wall[0] = '1';
+	st_map->id_wall[1] = '\0';
+	st_map->id_floor[0] = '0';
+	st_map->id_floor[1] = '\0';
 }

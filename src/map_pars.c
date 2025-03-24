@@ -6,7 +6,7 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 14:54:29 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/03/24 16:21:53 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/03/24 16:45:28 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int		check_map(t_game *game)
 {
 	if (!check_size(game))
 		return (0);
-	if (!check_wall(game))
-		return (0);
+	//if (!check_wall(game))
+	//	return (0);
 	return (1);
 }

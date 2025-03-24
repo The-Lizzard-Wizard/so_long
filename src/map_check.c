@@ -6,12 +6,11 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:26:52 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/03/24 17:49:07 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/03/24 17:58:57 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
-#include "../libft/libft.h"
 
 int	is_wall(t_game *game, size_t l, size_t c)
 {
@@ -39,32 +38,20 @@ int		check_wall(t_game *game)
 	size_t	i;
 
 	i = 0;
-	while (game->st_map->map[0][i])
-	{
+	while (game->st_map->map[0][++i])
 		if (is_wall(game, 0, i) != 1)
 			return (0);
-		i++;
-	}
 	i = 0;
-	while (game->st_map->map[game->st_map->size_l - 1][i])
-	{
+	while (game->st_map->map[game->st_map->size_l - 1][++i])
 		if (is_wall(game, game->st_map->size_l - 1, i) != 1)
 			return (0);
-		i++;
-	}
 	i = 0;
-	while (i < game->st_map->size_l - 1)
-	{
+	while (++i < game->st_map->size_l - 1)
 		if (is_wall(game, i, 0) != 1)
 			return (0);
-		i++;
-	}
 	i = 0;
-	while (i < game->st_map->size_l - 1)
-	{
+	while (++i < game->st_map->size_l - 1)
 		if (is_wall(game, i, game->st_map->size_c - 1) != 1)
 			return (0);
-		i++;
-	}
 	return (1);
 }

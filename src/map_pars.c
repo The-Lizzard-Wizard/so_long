@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_pars.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gchauvet <gaelchauvet@orange.fr>           +#+  +:+       +#+        */
+/*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 14:54:29 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/03/25 02:04:47 by gchauvet         ###   ########lyon.fr   */
+/*   Updated: 2025/03/25 15:53:45 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,29 @@ int		check_size(t_game *game)
 	game->st_map->size_l = l;
 	game->st_map->size_c = c;
 	return (1);
+}
+
+void	init_info(t_map *st_map)
+{
+	size_t	l;
+	size_t	c;
+
+	l = 0;
+	while (st_map->map[l])
+	{
+		c = 0;
+		while (st_map->map[l][c])
+		{
+			if (st_map->map[l][c] == 'E')
+				st_map->nb_exit++;
+			if (st_map->map[l][c] == 'P')
+				st_map->nb_player++;
+			if (st_map->map[l][c] == 'C')
+				st_map->nb_item++;
+			c++;
+		}
+		l++;
+	}
 }
 
 void	init_texture_id(t_game *game)

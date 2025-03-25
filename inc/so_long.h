@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gchauvet <gaelchauvet@orange.fr>           +#+  +:+       +#+        */
+/*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:24:45 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/03/25 02:08:23 by gchauvet         ###   ########lyon.fr   */
+/*   Updated: 2025/03/25 15:55:00 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define SO_LONG_H
 
 #include <stddef.h>
-//push pls
+
 typedef struct s_map
 {
 	char			**map;
@@ -22,13 +22,16 @@ typedef struct s_map
 	size_t			size_c;
 	char			id_wall[3];
 	char			id_floor[2];
+	int				nb_exit;
+	int				nb_player;
+	int				nb_item;
 }	t_map;
 
 typedef struct s_item
 {
 	size_t			x;
 	size_t			y;
-	s_item struct *next;
+	struct s_item  *next;
 }	t_item;
 
 typedef struct s_player
@@ -41,7 +44,7 @@ typedef struct s_game
 {
 	t_map			*st_map;
 	t_player		*st_player;
-	t_iem			*st_iem;
+	t_item			*st_item;
 }	t_game;
 
 t_map	*pars(char **argv);
@@ -51,5 +54,6 @@ int		check_size(t_game *game);
 void	init_texture_id(t_game *game);
 int		is_wall(t_game *game, size_t l, size_t c);
 int		check_wall(t_game *game);
+void	init_info(t_map *st_map);
 
 #endif

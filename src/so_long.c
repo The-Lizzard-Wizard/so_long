@@ -6,7 +6,7 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 15:12:53 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/03/24 16:21:15 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/03/25 15:50:26 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@ void	print_map(t_game *game)
 	}
 	ft_printf("size l : %i\n", game->st_map->size_l);
 	ft_printf("size c : %i\n", game->st_map->size_c);
+	ft_printf("item : %i\n", game->st_map->nb_item);
+	ft_printf("exit : %i\n", game->st_map->nb_exit);
+	ft_printf("player : %i\n", game->st_map->nb_player);
 }
 
 int	main(int argc, char **argv)
@@ -38,6 +41,7 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	(void)argc;
 	game->st_map = pars(argv);
+	init_info(game);
 	if (check_map(game) == 0)
 	{
 		ft_printf("Error\n");

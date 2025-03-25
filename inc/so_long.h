@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gchauvet <gaelchauvet@orange.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:24:45 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/03/24 17:06:44 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/03/25 02:08:23 by gchauvet         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define SO_LONG_H
 
 #include <stddef.h>
-
+//push pls
 typedef struct s_map
 {
 	char			**map;
@@ -24,9 +24,24 @@ typedef struct s_map
 	char			id_floor[2];
 }	t_map;
 
+typedef struct s_item
+{
+	size_t			x;
+	size_t			y;
+	s_item struct *next;
+}	t_item;
+
+typedef struct s_player
+{
+	size_t			x;
+	size_t			y;
+}	t_player;
+
 typedef struct s_game
 {
 	t_map			*st_map;
+	t_player		*st_player;
+	t_iem			*st_iem;
 }	t_game;
 
 t_map	*pars(char **argv);

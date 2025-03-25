@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_pars.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gchauvet <gaelchauvet@orange.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 14:54:29 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/03/24 17:43:33 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/03/25 02:04:47 by gchauvet         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,34 @@ t_map	*pars(char **argv)
 	return (st_map);
 }
 
+void	store_data(t_game *game)
+{
+	size_t	l;
+	size_t	c;
+
+	l = 0;
+	while (game->st_map->map[l])
+	{
+		c = 0;
+		while (game->st_map->map[l][c])
+		{
+			if (game->st_map->map[l][c] == 'P')
+			{
+				game->st_player->x = c;
+				game->st_player->y = l;
+			}
+			c++;
+		}
+		l++;
+	}
+}
+
 int		check_size(t_game *game)
 {
 	size_t	l;
 	size_t	c;
-	size_t	size;
 
 	l = 0;
-	size = 0;
 	while (game->st_map->map[l])
 	{
 		c = 0;
@@ -68,15 +88,4 @@ void	init_texture_id(t_game *game)
 	game->st_map->id_wall[2] = '\0';
 	game->st_map->id_floor[0] = '0';
 	game->st_map->id_floor[1] = '\0';
-}
-
-int		check_map(t_game *game)
-{
-	init_texture_id(game);
-	if (!check_size(game))
-		return (0);
-	if (!check_wall(game))
-		return (0);
-	ft_printf("%c\n", game->st_map->map[2][2]);
-	return (1);
 }

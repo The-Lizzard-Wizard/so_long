@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gchauvet <gaelchauvet@orange.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:26:52 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/03/24 17:58:57 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/03/25 01:51:30 by gchauvet         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,21 @@ int		check_wall(t_game *game)
 	while (++i < game->st_map->size_l - 1)
 		if (is_wall(game, i, game->st_map->size_c - 1) != 1)
 			return (0);
+	return (1);
+}
+
+int	flood_fill()
+{
+	
+	return (1);
+}
+
+int		check_map(t_game *game)
+{
+	init_texture_id(game);
+	if (!check_size(game))
+		return (0);
+	if (!check_wall(game))
+		return (0);
 	return (1);
 }

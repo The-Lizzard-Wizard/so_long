@@ -6,7 +6,7 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 14:54:29 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/03/25 15:53:45 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/03/25 18:19:19 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "../libft/libft.h"
 #include "../inc/so_long.h"
 
-t_map	*pars(char **argv)
+t_map	*pars(char *path)
 {
 	t_map	*st_map;
 	int		ber;
@@ -24,7 +24,7 @@ t_map	*pars(char **argv)
 
 	line = NULL;
 	map_line = ft_strdup("");
-	ber = open(argv[1], O_RDONLY);
+	ber = open(path, O_RDONLY);
 	if (ber == -1)
 		return (NULL);
 	line = get_next_line(ber);
@@ -36,6 +36,7 @@ t_map	*pars(char **argv)
 	}
 	st_map = malloc(sizeof(t_map));
 	st_map->map = ft_split(map_line, '\n');
+	st_map->path = path;
 	return (st_map);
 }
 
@@ -81,7 +82,7 @@ int		check_size(t_game *game)
 	return (1);
 }
 
-void	init_info(t_map *st_map)
+void	init_info(t_game *game ,t_map *st_map, int initp)
 {
 	size_t	l;
 	size_t	c;
@@ -102,13 +103,20 @@ void	init_info(t_map *st_map)
 		}
 		l++;
 	}
+	if (initp == 1)
+		init_player(game);
 }
 
-void	init_texture_id(t_game *game)
+void	init_texture_id(t_game *game, t_map *st_map)
 {
-	game->st_map->id_wall[0] = '1';
-	game->st_map->id_wall[1] = '2';
-	game->st_map->id_wall[2] = '\0';
-	game->st_map->id_floor[0] = '0';
-	game->st_map->id_floor[1] = '\0';
+	st_map->id_wall[0] = '1';
+	st_map->id_wall[1] = '2';
+	st_map->id_wall[2] = '\0';
+	st_map->id_floor[0] = '0';
+	st_map->id_floor[1] = 'P';
+	st_map->id_floor[2] = 'C';
+	st_map->id_floor[3] = 'E';
+	st_map->id_floor[4] = '\0';
+	if (!game)
+		return ;
 }

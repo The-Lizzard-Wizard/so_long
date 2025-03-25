@@ -6,7 +6,7 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:24:45 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/03/25 15:55:00 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/03/25 18:17:59 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@ typedef struct s_map
 	char			**map;
 	size_t			size_l;
 	size_t			size_c;
+	char 			*path;
 	char			id_wall[3];
-	char			id_floor[2];
+	char			id_floor[5];
 	int				nb_exit;
 	int				nb_player;
 	int				nb_item;
@@ -47,13 +48,16 @@ typedef struct s_game
 	t_item			*st_item;
 }	t_game;
 
-t_map	*pars(char **argv);
 void	print_map(t_game *game);
+int		is_wall(t_map *st_map, size_t l, size_t c);
 int		check_map(t_game *game);
 int		check_size(t_game *game);
-void	init_texture_id(t_game *game);
-int		is_wall(t_game *game, size_t l, size_t c);
 int		check_wall(t_game *game);
-void	init_info(t_map *st_map);
+
+t_map	*pars(char *path);
+void	init_texture_id(t_game *game, t_map *st_map);
+void	init_player(t_game *game);
+void	init_info(t_game *game, t_map *st_map, int initp);
+
 
 #endif

@@ -6,13 +6,12 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:26:52 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/03/25 18:22:11 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/03/25 18:24:38 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 #include <stddef.h>
-#include "../libft/libft.h"
 
 int	is_wall(t_map *st_map, size_t l, size_t c)
 {

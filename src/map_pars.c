@@ -6,7 +6,7 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 14:54:29 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/03/26 16:11:32 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/03/26 17:09:45 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,9 @@ void	init_info(t_game *game ,t_map *st_map, int initp)
 	size_t	c;
 
 	l = 0;
+	st_map->nb_exit = 0;
+	st_map->nb_player = 0;
+	st_map->nb_item = 0;
 	while (st_map->map[l])
 	{
 		c = 0;

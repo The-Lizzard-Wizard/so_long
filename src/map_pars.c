@@ -6,7 +6,7 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 14:54:29 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/03/25 18:19:19 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/03/26 16:11:32 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,10 @@ t_map	*pars(char *path)
 	}
 	st_map = malloc(sizeof(t_map));
 	st_map->map = ft_split(map_line, '\n');
-	st_map->path = path;
+	st_map->path = ft_strdup(path);
+	close(ber);
+	free(line);
+	free(map_line);
 	return (st_map);
 }
 
@@ -109,14 +112,8 @@ void	init_info(t_game *game ,t_map *st_map, int initp)
 
 void	init_texture_id(t_game *game, t_map *st_map)
 {
-	st_map->id_wall[0] = '1';
-	st_map->id_wall[1] = '2';
-	st_map->id_wall[2] = '\0';
-	st_map->id_floor[0] = '0';
-	st_map->id_floor[1] = 'P';
-	st_map->id_floor[2] = 'C';
-	st_map->id_floor[3] = 'E';
-	st_map->id_floor[4] = '\0';
+	st_map->id_wall = ft_strdup("12");
+	st_map->id_floor = ft_strdup("0PCE");
 	if (!game)
 		return ;
 }

@@ -1,36 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   free_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/18 16:27:21 by ********          #+#    #+#             */
-/*   Updated: 2025/03/26 16:43:52 by gchauvet         ###   ########.fr       */
+/*   Created: 2025/03/26 15:50:00 by gchauvet          #+#    #+#             */
+/*   Updated: 2025/03/26 16:05:05 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
+#include "../inc/so_long.h"
 
-char	*ft_strjoin(char *s1, char *s2)
+void	free_game(t_game *game)
 {
-	char	*s;
-	size_t	i;
-
-	s = ft_calloc(ft_strlen(s1) + ft_strlen(s2) + 1, sizeof(char));
-	i = 0;
-	if (s == NULL)
-		return (NULL);
-	while (s1[i])
-	{
-		s[i] = s1[i];
-		i++;
-	}
-	while (s2[i - ft_strlen(s1)])
-	{
-		s[i] = s2[i - ft_strlen(s1)];
-		i++;
-	}
-	free(s1);
-	return (s);
+    free_map(game->st_map);
+    free(game->st_player);
+    //free(game->st_item);
+    free(game);
 }

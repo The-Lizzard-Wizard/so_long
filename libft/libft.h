@@ -6,7 +6,7 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:20:28 by ********          #+#    #+#             */
-/*   Updated: 2025/03/21 16:10:58 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/03/26 16:42:54 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	*ft_memchr(const void *s, int c, size_t n);
 char	*ft_strnstr(const char *big, const char *little, size_t len);
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
-char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strjoin(char *s1, char *s2);
 char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
 t_list	*ft_lstnew(void *content);

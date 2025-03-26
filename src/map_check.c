@@ -6,7 +6,7 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:26:52 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/03/25 18:24:38 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/03/26 15:56:27 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ int	flood_fill_check(t_game *game)
 	init_info(game, st_tmp_map, 0);
 	if (st_tmp_map->nb_exit != 0 || st_tmp_map->nb_item != 0 || st_tmp_map->nb_player != 0)
 		return (0);
+	free_map(st_tmp_map);
 	return (1);
 }
 

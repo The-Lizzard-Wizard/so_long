@@ -6,7 +6,7 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 15:12:53 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/03/25 18:03:04 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/03/26 15:56:06 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,6 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	}
 	print_map(game);
+	free_game(game);
 	return (EXIT_SUCCESS);
 }

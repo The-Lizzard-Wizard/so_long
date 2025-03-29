@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_game.c                                        :+:      :+:    :+:   */
+/*   update.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/26 15:50:00 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/03/29 14:36:12 by gchauvet         ###   ########.fr       */
+/*   Created: 2025/03/27 12:57:01 by gchauvet          #+#    #+#             */
+/*   Updated: 2025/03/27 16:10:34 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "../inc/so_long.h"
+#include "../libft/libft.h"
+#include "../minilibx-linux/mlx.h"
 
-void	free_mlx()
-{
-		
-}
 
-void	free_game(t_game *game)
+
+int	mlx_update(void)
 {
-	free_map(game->st_map);
-	free(game->st_player);
-	//free(game->st_item);
-	free(game);
+	return (0);
 }

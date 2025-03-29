@@ -6,7 +6,7 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:24:45 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/03/26 16:10:36 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/03/29 15:09:49 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,22 @@ typedef struct s_player
 	size_t			y;
 }	t_player;
 
+typedef struct s_mlx
+{
+	void	*mlx_ptr;
+	void	*win_ptr;
+	void	*img_f_1;
+	void	*img_w_1;
+	void	*img_w_2;
+	void	*img_wizard;
+	void	*img_item;
+} t_mlx;
+
 typedef struct s_game
 {
 	t_map			*st_map;
 	t_player		*st_player;
+	t_mlx			*st_mlx;
 }	t_game;
 
 void	print_map(t_game *game);
@@ -57,10 +69,12 @@ t_map	*pars(char *path);
 void	init_texture_id(t_game *game, t_map *st_map);
 void	init_player(t_game *game);
 void	init_info(t_game *game, t_map *st_map, int initp);
+void	init_mlx(t_game *game);
 
 void	free_array(char **array);
 void	free_map(t_map *st_map);
 void	free_game(t_game *game);
 
+int	mlx_update(void);
 
 #endif

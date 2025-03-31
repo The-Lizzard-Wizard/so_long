@@ -6,7 +6,7 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:24:45 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/03/29 15:09:49 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/03/31 13:57:09 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ typedef struct s_map
 	int				nb_exit;
 	int				nb_player;
 	int				nb_item;
+	size_t			exit_x;
+	size_t			exit_y;
 }	t_map;
 
 typedef struct s_item
@@ -46,8 +48,14 @@ typedef struct s_mlx
 	void	*mlx_ptr;
 	void	*win_ptr;
 	void	*img_f_1;
+	void	*img_f_2;
+	void	*img_b;
+	void	*img_w;
 	void	*img_w_1;
 	void	*img_w_2;
+	void	*exit_close;
+	void	*exit_open;
+	void	*mushroom;
 	void	*img_wizard;
 	void	*img_item;
 } t_mlx;
@@ -57,6 +65,7 @@ typedef struct s_game
 	t_map			*st_map;
 	t_player		*st_player;
 	t_mlx			*st_mlx;
+	t_item			*st_item;
 }	t_game;
 
 void	print_map(t_game *game);
@@ -74,6 +83,8 @@ void	init_mlx(t_game *game);
 void	free_array(char **array);
 void	free_map(t_map *st_map);
 void	free_game(t_game *game);
+
+t_item    *new_item(t_game *game, t_map *st_map, size_t x, size_t y);
 
 int	mlx_update(void);
 

@@ -6,7 +6,7 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 14:54:29 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/03/26 17:09:45 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/03/31 13:54:13 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,25 +43,15 @@ t_map	*pars(char *path)
 	return (st_map);
 }
 
-void	store_data(t_game *game)
+void	init_exit(t_game *game, t_map *st_map, size_t l, size_t c)
 {
-	size_t	l;
-	size_t	c;
-
-	l = 0;
-	while (game->st_map->map[l])
+	if (game)
 	{
-		c = 0;
-		while (game->st_map->map[l][c])
-		{
-			if (game->st_map->map[l][c] == 'P')
-			{
-				game->st_player->x = c;
-				game->st_player->y = l;
-			}
-			c++;
-		}
-		l++;
+		st_map->exit_x = 0;
+		st_map->exit_y = 0;
+		st_map->exit_x = c;
+		st_map->exit_y = l;
+		st_map->nb_exit++;
 	}
 }
 
@@ -100,11 +90,11 @@ void	init_info(t_game *game ,t_map *st_map, int initp)
 		while (st_map->map[l][c])
 		{
 			if (st_map->map[l][c] == 'E')
-				st_map->nb_exit++;
+				init_exit(game, st_map, l ,c);
 			if (st_map->map[l][c] == 'P')
 				st_map->nb_player++;
 			if (st_map->map[l][c] == 'C')
-				st_map->nb_item++;
+				new_item(game, st_map, c, l);
 			c++;
 		}
 		l++;
@@ -115,8 +105,8 @@ void	init_info(t_game *game ,t_map *st_map, int initp)
 
 void	init_texture_id(t_game *game, t_map *st_map)
 {
-	st_map->id_wall = ft_strdup("12");
-	st_map->id_floor = ft_strdup("0PCE");
+	st_map->id_wall = ft_strdup("12B");
+	st_map->id_floor = ft_strdup("0PCE3");
 	if (!game)
 		return ;
 }

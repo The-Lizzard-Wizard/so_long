@@ -6,7 +6,7 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 15:12:53 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/03/31 14:26:26 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/04/02 14:06:49 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <stdlib.h>
 #include "../libft/libft.h"
 #include "../minilibx-linux/mlx.h"
+#include <X11/X.h>
 
 void	print_map(t_game *game)
 {
@@ -86,12 +87,16 @@ void	draw_map(t_game *game)
 void	draw_item(t_game *game)
 {
 	t_item	*item;
+	int		i;
 
+	i = 0;
 	item = game->st_item;
-	while (item)
+	while (i < game->st_map->nb_item)
 	{
+		ft_printf("x : %i y : %i me : %p next : %p nb : %i\n",item->x, item->y, item, item->next, game->st_map->nb_item);
 		mlx_put_image_to_window(game->st_mlx->mlx_ptr, game->st_mlx->win_ptr, game->st_mlx->mushroom, item->x * 128 , item->y * 128);
 		item = item->next;
+		i++;
 	}
 }
 
@@ -121,6 +126,20 @@ void	init_game(t_game *game, char **argv)
 	init_mlx(game);
 }
 
+int	close_win(t_game *game)
+{
+	mlx_loop_end(game->st_mlx->mlx_ptr);
+	ft_printf("alaide");
+	free_game(game);
+	exit(EXIT_SUCCESS);
+	return (EXIT_SUCCESS);
+}
+
+void	lisen_key(t_game *game)
+{
+	mlx_hook(game->st_mlx->win_ptr, DestroyNotify, KeyPressMask, close_win, game);
+}
+
 int	main(int argc, char **argv)
 {
 	t_game	*game;
@@ -129,9 +148,12 @@ int	main(int argc, char **argv)
 	if (!game)
 		return (EXIT_FAILURE);
 	(void)argc;
+	(void)argv;
 	init_game(game, argv);
 	draw(game);
+	lisen_key(game);
 	mlx_loop(game->st_mlx->mlx_ptr);
-	free_game(game);
+	mlx_loop_hook(game->st_mlx->mlx_ptr, mlx_update, game);
+	//free_game(game);
 	return (EXIT_SUCCESS);
 }

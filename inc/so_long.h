@@ -6,7 +6,7 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:24:45 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/03/31 13:57:09 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/04/02 14:07:28 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ typedef struct s_mlx
 	void	*exit_open;
 	void	*mushroom;
 	void	*img_wizard;
-	void	*img_item;
 } t_mlx;
 
 typedef struct s_game
@@ -84,8 +83,9 @@ void	free_array(char **array);
 void	free_map(t_map *st_map);
 void	free_game(t_game *game);
 
-t_item    *new_item(t_game *game, t_map *st_map, size_t x, size_t y);
+t_item    *new_item(t_game *game);
+t_item    *add_item(t_game *game, t_map *st_map, size_t x, size_t y);
 
-int	mlx_update(void);
+int		mlx_update(t_game *game);
 
 #endif

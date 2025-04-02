@@ -6,22 +6,56 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 15:50:00 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/03/29 14:36:12 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/04/01 15:55:34 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "../inc/so_long.h"
+#include "../minilibx-linux/mlx.h"
 
-void	free_mlx()
+void	free_img(t_game *game)
 {
+	if (game->st_mlx->img_f_1)
+		mlx_destroy_image(game->st_mlx->mlx_ptr, game->st_mlx->img_f_1);
+	if (game->st_mlx->img_f_2)
+		mlx_destroy_image(game->st_mlx->mlx_ptr, game->st_mlx->img_f_2);
+	if (game->st_mlx->img_b)
+		mlx_destroy_image(game->st_mlx->mlx_ptr, game->st_mlx->img_b);
+	if (game->st_mlx->img_w)
+		mlx_destroy_image(game->st_mlx->mlx_ptr, game->st_mlx->img_w);
+	if (game->st_mlx->img_w_1)
+		mlx_destroy_image(game->st_mlx->mlx_ptr, game->st_mlx->img_w_1);
+	if (game->st_mlx->img_w_2)
+		mlx_destroy_image(game->st_mlx->mlx_ptr, game->st_mlx->img_w_2);
+	if (game->st_mlx->exit_close)
+		mlx_destroy_image(game->st_mlx->mlx_ptr, game->st_mlx->exit_close);
+	if (game->st_mlx->exit_open)
+		mlx_destroy_image(game->st_mlx->mlx_ptr, game->st_mlx->mlx_ptr);
+	if (game->st_mlx->mushroom)
+		mlx_destroy_image(game->st_mlx->mlx_ptr, game->st_mlx->mushroom);
+	// if (game->st_mlx->img_wizard)
+	// 	mlx_destroy_image(game->st_mlx->mlx_ptr, game->st_mlx->img_wizard);
 		
+}
+
+void	free_mlx(t_game *game)
+{
+	free_img(game);
+	if (game->st_mlx->win_ptr)
+		mlx_destroy_window(game->st_mlx->mlx_ptr, game->st_mlx->win_ptr);
+	if (game->st_mlx->mlx_ptr)
+	{
+		mlx_destroy_display(game->st_mlx->mlx_ptr);
+		free(game->st_mlx->mlx_ptr);
+	}
 }
 
 void	free_game(t_game *game)
 {
 	free_map(game->st_map);
 	free(game->st_player);
+	free_mlx(game);
 	//free(game->st_item);
 	free(game);
 }

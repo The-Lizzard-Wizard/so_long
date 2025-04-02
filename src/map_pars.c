@@ -6,7 +6,7 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 14:54:29 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/03/31 13:54:13 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/04/01 16:03:48 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void	init_info(t_game *game ,t_map *st_map, int initp)
 			if (st_map->map[l][c] == 'P')
 				st_map->nb_player++;
 			if (st_map->map[l][c] == 'C')
-				new_item(game, st_map, c, l);
+				add_item(game, st_map, c, l);
 			c++;
 		}
 		l++;

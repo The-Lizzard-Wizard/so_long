@@ -6,7 +6,7 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:26:52 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/03/31 13:24:21 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/04/03 17:37:39 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,9 @@ int	flood_fill_check(t_game *game)
 {
 	t_map	*st_tmp_map;
 	
-	st_tmp_map = pars(game->st_map->path);
+	st_tmp_map = pars(game, game->st_map->path);
 	init_texture_id(game, st_tmp_map);
-	flood_fill(game, st_tmp_map, game->st_player->y, game->st_player->x);
+	flood_fill(game, st_tmp_map, game->st_player.y, game->st_player.x);
 	init_info(game, st_tmp_map, 0);
 	if (st_tmp_map->nb_exit != 0 || st_tmp_map->nb_item != 0 || st_tmp_map->nb_player != 0)
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 18:50:36 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/03/31 15:37:32 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/04/02 14:39:45 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	load_img(t_game *game)
 	game->st_mlx->exit_close = mlx_xpm_file_to_image(game->st_mlx->mlx_ptr, "assets/exit_close.xpm", &sx, &sy);
 	game->st_mlx->exit_open = mlx_xpm_file_to_image(game->st_mlx->mlx_ptr, "assets/exit_open.xpm", &sx, &sy);
 	game->st_mlx->mushroom = mlx_xpm_file_to_image(game->st_mlx->mlx_ptr, "assets/mushroom.xpm", &sx, &sy);
+	game->st_mlx->img_wizard = mlx_xpm_file_to_image(game->st_mlx->mlx_ptr, "assets/player.xpm", &sx, &sy);
 }
 
 void	init_mlx(t_game *game)

@@ -6,7 +6,7 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 01:59:49 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/04/02 13:42:24 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/04/03 17:09:54 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ t_item    *new_item(t_game *game)
     }
     new->x = 0;
     new->y = 0;
+    new->collect = 0;
     new->next = NULL;
     return (new);
 }

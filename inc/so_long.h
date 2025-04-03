@@ -6,7 +6,7 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:24:45 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/04/02 14:07:28 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/04/03 18:09:35 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_item
 {
 	size_t			x;
 	size_t			y;
+	int				collect;
 	struct s_item  *next;
 }	t_item;
 
@@ -41,6 +42,7 @@ typedef struct s_player
 {
 	size_t			x;
 	size_t			y;
+	int				mushroom;
 }	t_player;
 
 typedef struct s_mlx
@@ -62,7 +64,7 @@ typedef struct s_mlx
 typedef struct s_game
 {
 	t_map			*st_map;
-	t_player		*st_player;
+	t_player		st_player;
 	t_mlx			*st_mlx;
 	t_item			*st_item;
 }	t_game;
@@ -73,7 +75,7 @@ int		check_map(t_game *game);
 int		check_size(t_game *game);
 int		check_wall(t_game *game);
 
-t_map	*pars(char *path);
+t_map	*pars(t_game *game, char *path);
 void	init_texture_id(t_game *game, t_map *st_map);
 void	init_player(t_game *game);
 void	init_info(t_game *game, t_map *st_map, int initp);
@@ -83,9 +85,16 @@ void	free_array(char **array);
 void	free_map(t_map *st_map);
 void	free_game(t_game *game);
 
-t_item    *new_item(t_game *game);
-t_item    *add_item(t_game *game, t_map *st_map, size_t x, size_t y);
+t_item	*new_item(t_game *game);
+t_item	*add_item(t_game *game, t_map *st_map, size_t x, size_t y);
 
-int		mlx_update(t_game *game);
+int		player_move_up(t_game *game);
+int		keypresse(int key, t_game *game);
+void	draw(t_game *game);
+void	draw_wall(t_game *game, size_t l,size_t c);
+void	draw_floor(t_game *game, size_t l,size_t c);
+void	draw_map(t_game *game);
+void	draw_item(t_game *game);
+int		close_win(t_game *game);
 
 #endif

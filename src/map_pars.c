@@ -6,7 +6,7 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 14:54:29 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/04/01 16:03:48 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/04/03 18:06:24 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "../libft/libft.h"
 #include "../inc/so_long.h"
 
-t_map	*pars(char *path)
+t_map	*pars(t_game *game, char *path)
 {
 	t_map	*st_map;
 	int		ber;
@@ -23,10 +23,10 @@ t_map	*pars(char *path)
 	char	*map_line;
 
 	line = NULL;
-	map_line = ft_strdup("");
 	ber = open(path, O_RDONLY);
 	if (ber == -1)
-		return (NULL);
+		close_win(game);
+	map_line = ft_strdup("");
 	line = get_next_line(ber);
 	while (line)
 	{
@@ -47,8 +47,6 @@ void	init_exit(t_game *game, t_map *st_map, size_t l, size_t c)
 {
 	if (game)
 	{
-		st_map->exit_x = 0;
-		st_map->exit_y = 0;
 		st_map->exit_x = c;
 		st_map->exit_y = l;
 		st_map->nb_exit++;

@@ -6,7 +6,7 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 15:50:00 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/04/01 15:55:34 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/04/03 18:47:56 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,11 @@ void	free_img(t_game *game)
 	if (game->st_mlx->exit_close)
 		mlx_destroy_image(game->st_mlx->mlx_ptr, game->st_mlx->exit_close);
 	if (game->st_mlx->exit_open)
-		mlx_destroy_image(game->st_mlx->mlx_ptr, game->st_mlx->mlx_ptr);
+		mlx_destroy_image(game->st_mlx->mlx_ptr, game->st_mlx->exit_open);
 	if (game->st_mlx->mushroom)
 		mlx_destroy_image(game->st_mlx->mlx_ptr, game->st_mlx->mushroom);
-	// if (game->st_mlx->img_wizard)
-	// 	mlx_destroy_image(game->st_mlx->mlx_ptr, game->st_mlx->img_wizard);
-		
+	if (game->st_mlx->img_wizard)
+		mlx_destroy_image(game->st_mlx->mlx_ptr, game->st_mlx->img_wizard);
 }
 
 void	free_mlx(t_game *game)
@@ -49,13 +48,32 @@ void	free_mlx(t_game *game)
 		mlx_destroy_display(game->st_mlx->mlx_ptr);
 		free(game->st_mlx->mlx_ptr);
 	}
+	free(game->st_mlx);
+}
+
+void	free_item(t_game *game)
+{
+	t_item	*tmp;
+
+	while (game->st_item)
+	{
+		tmp = game->st_item->next;
+		free(game->st_item);
+		game->st_item = tmp;
+	}
+	tmp = NULL;
 }
 
 void	free_game(t_game *game)
 {
-	free_map(game->st_map);
-	free(game->st_player);
-	free_mlx(game);
-	//free(game->st_item);
-	free(game);
+	if (game)
+	{
+		if (game->st_map)
+			free_map(game->st_map);
+		if (game->st_mlx)
+			free_mlx(game);
+		if (game->st_item)
+			free_item(game);
+		free(game);
+	}
 }

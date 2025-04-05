@@ -6,7 +6,7 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 15:50:00 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/04/03 18:47:56 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/04/05 14:17:16 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ void	free_img(t_game *game)
 
 void	free_mlx(t_game *game)
 {
-	free_img(game);
+	if (game->st_mlx->mlx_ptr)
+		free_img(game);
 	if (game->st_mlx->win_ptr)
 		mlx_destroy_window(game->st_mlx->mlx_ptr, game->st_mlx->win_ptr);
 	if (game->st_mlx->mlx_ptr)

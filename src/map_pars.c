@@ -6,7 +6,7 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 14:54:29 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/04/03 18:06:24 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/04/05 14:25:09 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ t_map	*pars(t_game *game, char *path)
 	line = NULL;
 	ber = open(path, O_RDONLY);
 	if (ber == -1)
-		close_win(game);
-	map_line = ft_strdup("");
+		close_window(game, 1, "map files opening failed\n");
+	map_line = NULL;
 	line = get_next_line(ber);
 	while (line)
 	{
@@ -40,6 +40,7 @@ t_map	*pars(t_game *game, char *path)
 	close(ber);
 	free(line);
 	free(map_line);
+	check_map_info(game, st_map);
 	return (st_map);
 }
 
@@ -53,7 +54,7 @@ void	init_exit(t_game *game, t_map *st_map, size_t l, size_t c)
 	}
 }
 
-int		check_size(t_game *game)
+int	check_size(t_game *game)
 {
 	size_t	l;
 	size_t	c;
@@ -73,7 +74,7 @@ int		check_size(t_game *game)
 	return (1);
 }
 
-void	init_info(t_game *game ,t_map *st_map, int initp)
+void	init_info(t_game *game, t_map *st_map, int initp)
 {
 	size_t	l;
 	size_t	c;
@@ -88,7 +89,7 @@ void	init_info(t_game *game ,t_map *st_map, int initp)
 		while (st_map->map[l][c])
 		{
 			if (st_map->map[l][c] == 'E')
-				init_exit(game, st_map, l ,c);
+				init_exit(game, st_map, l, c);
 			if (st_map->map[l][c] == 'P')
 				st_map->nb_player++;
 			if (st_map->map[l][c] == 'C')
@@ -105,6 +106,6 @@ void	init_texture_id(t_game *game, t_map *st_map)
 {
 	st_map->id_wall = ft_strdup("12B");
 	st_map->id_floor = ft_strdup("0PCE3");
-	if (!game)
-		return ;
+	if (!st_map->id_floor || !st_map->id_wall)
+		close_window(game, 0, NULL);
 }

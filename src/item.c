@@ -6,53 +6,47 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 01:59:49 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/04/03 17:09:54 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/04/05 14:24:21 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
-#include "../libft/libft.h"
 #include "stdlib.h"
+#include <unistd.h>
 
-t_item    *new_item(t_game *game)
+t_item	*new_item(t_game *game)
 {
-    t_item	*new;
+	t_item	*new;
 
-    new = malloc(sizeof(t_item));
-    if (!new)
-    {
-        free_game(game);
-        return (NULL);
-    }
-    new->x = 0;
-    new->y = 0;
-    new->collect = 0;
-    new->next = NULL;
-    return (new);
+	new = NULL;
+	new = malloc(sizeof(t_item));
+	if (!new)
+		close_window(game, 1, "item load failed\n");
+	new->x = 0;
+	new->y = 0;
+	new->collect = 0;
+	new->next = NULL;
+	return (new);
 }
 
-t_item    *add_item(t_game *game, t_map *st_map, size_t x, size_t y)
+t_item	*add_item(t_game *game, t_map *st_map, size_t x, size_t y)
 {
-    t_item	*new;
+	t_item	*new;
 
-    // if (st_map->nb_item > 0)
-    // {
-        new = new_item(game);
-        if (!new)
-            return (NULL);
-        new->x = x;
-        new->y = y;
-        new->next = game->st_item;
-        game->st_item = new;
-    // }
-    // else
-    // {
-    //     new = new_item(game);
-    //     if (!new)
-    //         return (NULL);
-    //     new->x = x;
-    //     new->y = y;
-    // }
-    st_map->nb_item++;
-    return (new);
+	new = NULL;
+	new = new_item(game);
+	if (!new)
+		close_window(game, 1, "item load failed\n");
+	new->x = x;
+	new->y = y;
+	new->next = game->st_item;
+	game->st_item = new;
+	st_map->nb_item++;
+	return (new);
+}
+
+void	init_index_null(t_map *st_map)
+{
+	st_map->id_floor = NULL;
+	st_map->id_wall = NULL;
 }

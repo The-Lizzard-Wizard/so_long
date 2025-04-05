@@ -6,7 +6,7 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:20:28 by ********          #+#    #+#             */
-/*   Updated: 2025/03/26 16:42:54 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/04/04 18:24:00 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_list
 
 char	*get_next_line(int fd);
 int		ft_strchr_gnl(const char *s, int c);
-char	*ft_strjoin_gnl(char *s1, char const *s2);
+char	*ft_strjoin_gnl(char *s1, char *s2);
 char	*ft_strdup_gnl(const char *s);
 size_t	ft_strlen_gnl(const char *s);
 

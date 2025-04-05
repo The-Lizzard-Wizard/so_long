@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ******** <*******************.fr>          +#+  +:+       +#+        */
+/*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 13:16:27 by ********          #+#    #+#             */
-/*   Updated: 2025/01/26 10:52:17 by ********         ###   ########.fr       */
+/*   Updated: 2025/04/04 18:23:43 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,14 @@ char	*ft_strdup_gnl(const char *s)
 	return (dup_s);
 }
 
-char	*ft_strjoin_gnl(char *s1, char const *s2)
+char	*ft_strjoin_gnl(char *s1, char *s2)
 {
 	char	*new_s;
 	int		i;
 	int		j;
 
 	if (!s1)
-		return (NULL);
+		return (s2);
 	if (!s2)
 		return (free(s1), NULL);
 	new_s = malloc(sizeof(char) * (ft_strlen_gnl(s1) + ft_blen(s2) + 1));

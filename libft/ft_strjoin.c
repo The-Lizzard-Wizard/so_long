@@ -6,7 +6,7 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 16:27:21 by ********          #+#    #+#             */
-/*   Updated: 2025/03/26 16:43:52 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/04/04 18:45:56 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,19 @@ char	*ft_strjoin(char *s1, char *s2)
 	char	*s;
 	size_t	i;
 
+	if (!s1)
+	{
+		s = ft_strdup(s2);
+		if (!s)
+			return (NULL);
+		return (s);
+	}
 	s = ft_calloc(ft_strlen(s1) + ft_strlen(s2) + 1, sizeof(char));
-	i = 0;
+	i = -1;
 	if (s == NULL)
 		return (NULL);
-	while (s1[i])
-	{
+	while (s1[++i])
 		s[i] = s1[i];
-		i++;
-	}
 	while (s2[i - ft_strlen(s1)])
 	{
 		s[i] = s2[i - ft_strlen(s1)];

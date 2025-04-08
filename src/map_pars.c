@@ -6,7 +6,7 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 14:54:29 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/04/05 14:25:09 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/04/08 14:58:14 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_map	*pars(t_game *game, char *path)
 	line = NULL;
 	ber = open(path, O_RDONLY);
 	if (ber == -1)
-		close_window(game, 1, "map files opening failed\n");
+		close_window(game, 1, "Error\nmap files opening failed\n");
 	map_line = NULL;
 	line = get_next_line(ber);
 	while (line)
@@ -104,7 +104,7 @@ void	init_info(t_game *game, t_map *st_map, int initp)
 
 void	init_texture_id(t_game *game, t_map *st_map)
 {
-	st_map->id_wall = ft_strdup("12B");
+	st_map->id_wall = ft_strdup("12BWG");
 	st_map->id_floor = ft_strdup("0PCE3");
 	if (!st_map->id_floor || !st_map->id_wall)
 		close_window(game, 0, NULL);

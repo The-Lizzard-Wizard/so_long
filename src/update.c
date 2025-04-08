@@ -6,7 +6,7 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 12:57:01 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/04/05 14:24:35 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/04/08 15:59:24 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	check_item(t_game *game)
 		if (tmp->collect == 0 && tmp->x == game->st_player.x
 			&& tmp->y == game->st_player.y)
 		{
+			game->st_map->map[tmp->y][tmp->x] = '0';
 			game->st_player.mushroom++;
 			tmp->collect = 1;
 		}
@@ -53,35 +54,35 @@ void	check_move(t_game *game, int key)
 
 void	move_cunter(t_game *game, int key)
 {
-	static int c;
-
 	if (key == 119)
 		if (is_wall(game->st_map, game->st_player.y - 1,
 				game->st_player.x) == 2)
-			c++;
+			game->st_player.nb_move++;
 	if (key == 100)
 		if (is_wall(game->st_map, game->st_player.y,
 				game->st_player.x + 1) == 2)
-			c++;
+			game->st_player.nb_move++;
 	if (key == 115)
 		if (is_wall(game->st_map, game->st_player.y + 1,
 				game->st_player.x) == 2)
-			c++;;
+			game->st_player.nb_move++;
 	if (key == 97)
 		if (is_wall(game->st_map, game->st_player.y,
 				game->st_player.x - 1) == 2)
-			c++;
-	ft_printf("moves : %i\n", c);
+			game->st_player.nb_move++;
+	if (key == 119 || key == 100 || key == 115 || key == 97)
+		ft_printf("moves : %i\n", game->st_player.nb_move);
 }
 
 int	keypresse(int key, t_game *game)
 {
-	check_move(game, key);
 	move_cunter(game, key);
+	check_gandalf(game, key);
+	check_move(game, key);
 	check_item(game);
 	if (game->st_player.mushroom == game->st_map->nb_item
-			&& game->st_map->exit_x == game->st_player.x
-			&& game->st_map->exit_y == game->st_player.y)
+		&& game->st_map->exit_x == game->st_player.x
+		&& game->st_map->exit_y == game->st_player.y)
 		close_window(game, 1, "you win !!\n");
 	if (key == 119 || key == 100 || key == 115 || key == 97)
 		draw(game);

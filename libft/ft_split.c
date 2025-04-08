@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ******** <*******************.fr>          +#+  +:+       +#+        */
+/*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 17:06:36 by ********          #+#    #+#             */
-/*   Updated: 2024/11/26 14:03:10 by ********         ###   ########.fr       */
+/*   Updated: 2025/04/08 13:16:31 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,8 @@ char	**ft_split(char const *s, char c)
 	size_t	i;
 
 	i = 0;
+	if (!s)
+		return (NULL);
 	array = ft_calloc(wordcount(s, c) + 1, sizeof(char *));
 	if (array == NULL)
 		return (NULL);

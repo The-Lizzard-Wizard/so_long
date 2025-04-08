@@ -6,12 +6,11 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 16:25:12 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/04/03 18:10:33 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/04/08 13:21:09 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
-#include "../libft/libft.h"
 #include <stdlib.h>
 
 void	init_player(t_game *game)
@@ -35,4 +34,7 @@ void	init_player(t_game *game)
 		}
 		l++;
 	}
+	game->st_player.nb_move = 0;
+	if (game->st_player.x == 0 && game->st_player.y == 0)
+		close_window(game, 1, "Error\ninvalid map\n");
 }

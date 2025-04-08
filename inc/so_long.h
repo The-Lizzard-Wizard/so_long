@@ -6,7 +6,7 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:24:45 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/04/05 14:23:22 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/04/08 15:15:54 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_player
 {
 	size_t			x;
 	size_t			y;
+	int				nb_move;
 	int				mushroom;
 }	t_player;
 
@@ -55,6 +56,7 @@ typedef struct s_mlx
 	void	*img_w;
 	void	*img_w_1;
 	void	*img_w_2;
+	void	*gandalf;
 	void	*exit_close;
 	void	*exit_open;
 	void	*mushroom;
@@ -69,12 +71,32 @@ typedef struct s_game
 	t_item			*st_item;
 }	t_game;
 
-void	print_map(t_game *game);
+
+//                        .-'~~~-.
+//                      .'o  oOOOo`.
+//                     :~~~-.oOo   o`.
+//                      `. \ ~-.  oOOo.
+//                        `.; / ~.  OO:
+//                        .'  ;-- `.o.'
+//                       ,'  ; ~~--'~
+//                       ;  ;
+// _______\|/__________\\;_\\//___\|/__________________________________________________\|/__________________________\\//_________________________
+
+/*========================================*/
+/*=            check function            =*/
+/*========================================*/
+
 int		is_wall(t_map *st_map, size_t l, size_t c);
 int		check_map(t_game *game);
 int		check_size(t_game *game);
 int		check_wall(t_game *game);
 void	check_map_info(t_game *game, t_map *st_map);
+void	load_img2(t_game *game);
+void	check_img2(t_game *game);
+
+/*========================================*/
+/*=            init function             =*/
+/*========================================*/
 
 t_map	*pars(t_game *game, char *path);
 void	init_texture_id(t_game *game, t_map *st_map);
@@ -82,21 +104,67 @@ void	init_player(t_game *game);
 void	init_info(t_game *game, t_map *st_map, int initp);
 void	init_mlx(t_game *game);
 void	init_index_null(t_map *st_map);
+t_item	*new_item(t_game *game);
+t_item	*add_item(t_game *game, t_map *st_map, size_t x, size_t y);
+
+/*========================================*/
+/*=            free function             =*/
+/*========================================*/
 
 void	free_array(char **array);
 void	free_map(t_map *st_map);
 void	free_game(t_game *game);
+int		close_window(t_game *game, int aff_ms, char *ms);
 
-t_item	*new_item(t_game *game);
-t_item	*add_item(t_game *game, t_map *st_map, size_t x, size_t y);
+/*========================================*/
+/*=            draw function             =*/
+/*========================================*/
 
-int		player_move_up(t_game *game);
-int		keypresse(int key, t_game *game);
 void	draw(t_game *game);
 void	draw_wall(t_game *game, size_t l, size_t c);
 void	draw_floor(t_game *game, size_t l, size_t c);
 void	draw_map(t_game *game);
 void	draw_item(t_game *game);
-int		close_window(t_game *game, int aff_ms, char *ms);
+
+/*========================================*/
+/*=          gameplay function           =*/
+/*========================================*/
+
+int		player_move_up(t_game *game);
+int		keypresse(int key, t_game *game);
+
+void	check_gandalf(t_game *game, int key);
 
 #endif
+//                                    ....
+//                                 .'' .'''
+// .                             .'   :
+// \\                          .:    :
+//  \\                        _:    :       ..----.._
+//   \\                    .:::.....:::.. .'         ''.
+//    \\                 .'  #-. .-######'     #        '.
+//     \\                 '.##'/ ' ################       :
+//      \\                  #####################         :
+//       \\               ..##.-.#### .''''###'.._        :
+//        \\             :--:########:            '.    .' :
+//         \\..__...--.. :--:#######.'   '.         '.     :
+//         :     :  : : '':'-:'':'::        .         '.  .'
+//         '---'''..: :    ':    '..'''.      '.        :'
+//            \\  :: : :     '      ''''''.     '.      .:
+//             \\ ::  : :     '            '.      '      :
+//              \\::   : :           ....' ..:       '     '.
+//               \\::  : :    .....####\\ .~~.:.             :
+//                \\':.:.:.:'#########.===. ~ |.'-.   . '''.. :
+//                 \\    .'  ########## \ \ _.' '. '-.       '''.
+//                 :\\  :     ########   \ \      '.  '-.        :
+//                :  \\'    '   #### :    \ \      :.    '-.      :
+//               :  .'\\   :'  :     :     \ \       :      '-.    :
+//              : .'  .\\  '  :      :     :\ \       :        '.   :
+//              ::   :  \\'  :.      :     : \ \      :          '. :
+//              ::. :    \\   :      :    ;  \ \     :           '.:
+//               : ':    '\\ :  :     :     :  \:\     :        ..'
+//                  :    ' \\ :        :     ;  \|      :   .'''
+//                  '.   '  \\:                         :.''
+//                   .:..... \\:       :            ..''
+//                  '._____|'.\\......'''''''.:..'''
+//_____________________________\\______________________________________________________\|/________________________\\//__________________________

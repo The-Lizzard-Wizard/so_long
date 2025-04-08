@@ -6,12 +6,11 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 15:51:41 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/04/05 14:24:35 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/04/08 13:13:10 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "../libft/libft.h"
 #include "../inc/so_long.h"
 
 void	free_array(char **array)
@@ -41,6 +40,10 @@ void	check_map_info(t_game *game, t_map *st_map)
 	if (!st_map->path)
 		close_window(game, 0, NULL);
 	if (!st_map->map)
-		close_window(game, 0, NULL);
+	{
+		free(st_map->path);
+		free(st_map);
+		close_window(game, 1, "Error\nthe map is empty\n");
+	}
 	init_index_null(st_map);
 }

@@ -6,7 +6,7 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:48:51 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/04/08 14:49:39 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/04/09 16:33:56 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ void	load_img2(t_game *game)
 void	check_img2(t_game *game)
 {
 	if (!game->st_mlx->gandalf)
-		close_window(game, 1, "Error\ngandalf load failed\n");
+		close_window(game, 1, "Error\ngandalf load failed\n", EXIT_FAILURE);
 }

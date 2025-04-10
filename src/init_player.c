@@ -6,7 +6,7 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 16:25:12 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/04/08 13:21:09 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/04/09 16:34:18 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,5 @@ void	init_player(t_game *game)
 	}
 	game->st_player.nb_move = 0;
 	if (game->st_player.x == 0 && game->st_player.y == 0)
-		close_window(game, 1, "Error\ninvalid map\n");
+		close_window(game, 1, "Error\ninvalid map\n", EXIT_FAILURE);
 }

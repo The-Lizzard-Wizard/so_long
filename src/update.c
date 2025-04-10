@@ -6,12 +6,13 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 12:57:01 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/04/08 15:59:24 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/04/09 16:38:50 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 #include "../libft/libft.h"
+#include <stdlib.h>
 #include <unistd.h>
 
 void	check_item(t_game *game)
@@ -83,10 +84,10 @@ int	keypresse(int key, t_game *game)
 	if (game->st_player.mushroom == game->st_map->nb_item
 		&& game->st_map->exit_x == game->st_player.x
 		&& game->st_map->exit_y == game->st_player.y)
-		close_window(game, 1, "you win !!\n");
+		close_window(game, 1, "you win !!\n", EXIT_SUCCESS);
 	if (key == 119 || key == 100 || key == 115 || key == 97)
 		draw(game);
 	if (key == 65307)
-		close_window(game, 0, NULL);
+		close_window(game, 0, NULL, EXIT_SUCCESS);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 17:38:14 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/04/08 15:26:02 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/04/09 16:24:16 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void	draw_wall(t_game *game, size_t l, size_t c)
 		mlx_put_image_to_window(game->st_mlx->mlx_ptr,
 			game->st_mlx->win_ptr, game->st_mlx->img_w_2, c * 128, l * 128);
 	if (game->st_map->map[l][c] == 'G')
-			mlx_put_image_to_window(game->st_mlx->mlx_ptr,
-				game->st_mlx->win_ptr, game->st_mlx->gandalf, c * 128, l * 128);
+		mlx_put_image_to_window(game->st_mlx->mlx_ptr,
+			game->st_mlx->win_ptr, game->st_mlx->gandalf, c * 128, l * 128);
 }
 
 void	draw_floor(t_game *game, size_t l, size_t c)
@@ -101,11 +101,9 @@ void	draw_item(t_game *game)
 
 void	draw(t_game *game)
 {
-	//char *info;
 	draw_map(game);
 	draw_item(game);
 	mlx_put_image_to_window(game->st_mlx->mlx_ptr,
 		game->st_mlx->win_ptr, game->st_mlx->img_wizard,
 		game->st_player.x * 128, game->st_player.y * 128);
-	mlx_string_put(game->st_mlx->mlx_ptr, game->st_mlx->win_ptr, 0, (game->st_map->size_l * 128) + 20, 999999999, "bonjour");
 }

@@ -6,7 +6,7 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 15:12:53 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/04/08 11:56:42 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/04/09 16:37:55 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ void	init_game(t_game *game, char **argv)
 	game->st_map = pars(game, argv[1]);
 	init_info(game, game->st_map, 1);
 	if (check_map(game) == 0)
-		close_window(game, 1, "Error\ninvalid map\n");
+		close_window(game, 1, "Error\ninvalid map\n", EXIT_FAILURE);
 	init_mlx(game);
 }
 
-int	close_window(t_game *game, int aff_ms, char *ms)
+int	close_window(t_game *game, int aff_ms, char *ms, int fd)
 {
 	if (aff_ms == 1 && ms)
 		ft_printf("%s", ms);
@@ -59,8 +59,8 @@ int	close_window(t_game *game, int aff_ms, char *ms)
 			mlx_loop_end(game->st_mlx->mlx_ptr);
 		free_game(game);
 	}
-	exit(EXIT_SUCCESS);
-	return (EXIT_SUCCESS);
+	exit(fd);
+	return (fd);
 }
 
 void	lisen_key(t_game *game)
@@ -76,12 +76,13 @@ int	main(int argc, char **argv)
 
 	game = NULL;
 	if (argc != 2)
-		close_window(game, 1, "Error\nyou have too many or not enough arguments, try ./so_long <map.ber>\n");
+		close_window(game, 1,
+			"Error\nbad arguments\n", EXIT_FAILURE);
 	if (!ft_strnstr(&argv[1][ft_strlen(argv[1]) - 4], ".ber", 4))
-		close_window(game, 1, "Error\nbad extention\n");
+		close_window(game, 1, "Error\nbad extention\n", EXIT_FAILURE);
 	game = malloc(sizeof(t_game));
 	if (!game)
-		close_window(game, 1, "Error\ngame alloc failed\n");
+		close_window(game, 1, "Error\ngame alloc failed\n", EXIT_FAILURE);
 	init_game(game, argv);
 	draw(game);
 	lisen_key(game);

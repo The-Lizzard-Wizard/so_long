@@ -6,7 +6,7 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:26:52 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/04/05 14:27:29 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/04/17 12:54:45 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ int	check_map(t_game *game)
 	if (!check_wall(game))
 		return (0);
 	if (!flood_fill_check(game))
+		return (0);
+	if (!check_invalid_texture(game))
 		return (0);
 	if (game->st_map->nb_item < 1 || game->st_map->nb_player != 1
 		|| game->st_map->nb_exit != 1)

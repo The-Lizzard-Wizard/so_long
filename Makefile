@@ -1,7 +1,7 @@
 NAME = so_long
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g3
-SRC = so_long.c map_pars.c map_check.c init_player.c free_game.c free.c update.c init_mlx.c item.c draw.c img_load.c gandalf.c
+SRC = so_long.c map_pars.c map_check.c init_player.c free_game.c free.c update.c init_mlx.c item.c draw.c img_load.c gandalf.c map_check_2.c map_pars_2.c
 DEPS = inc/so_long.h
 ODIR = obj/
 OBJ = $(SRC:%.c=$(ODIR)%.o)

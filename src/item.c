@@ -6,7 +6,7 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 01:59:49 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/04/09 16:34:26 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/04/22 17:40:21 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,4 @@ t_item	*add_item(t_game *game, t_map *st_map, size_t x, size_t y)
 	game->st_item = new;
 	st_map->nb_item++;
 	return (new);
-}
-
-void	init_index_null(t_map *st_map)
-{
-	st_map->id_floor = NULL;
-	st_map->id_wall = NULL;
 }

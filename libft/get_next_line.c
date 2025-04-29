@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/16 13:15:07 by ********          #+#    #+#             */
-/*   Updated: 2025/04/04 18:24:16 by gchauvet         ###   ########.fr       */
+/*   Created: 2024/12/16 13:15:07 by gchauvet          #+#    #+#             */
+/*   Updated: 2025/04/29 16:58:19 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,14 @@ char	*get_next_line(int fd)
 	char		*line;
 
 	nb_read = 1;
-	line = ft_strdup_gnl("");
+	line = ft_strdup("");
 	if (!line)
 		return (NULL);
 	while (nb_read)
 	{
 		line = ft_strjoin_gnl(line, (char *)buffer);
+		if (!line)
+			return (free(line), NULL);
 		if (ft_strchr(line, '\n'))
 			break ;
 		nb_read = read(fd, buffer, BUFFER_SIZE);

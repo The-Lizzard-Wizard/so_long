@@ -6,7 +6,7 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 17:38:14 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/04/09 16:24:16 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/04/29 15:49:33 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,12 @@ void	draw_map(t_game *game)
 		{
 			draw_wall(game, l, c);
 			draw_floor(game, l, c);
+			if (c == game->st_player.x && l == game->st_player.y)
+			{
+				mlx_put_image_to_window(game->st_mlx->mlx_ptr,
+					game->st_mlx->win_ptr, game->st_mlx->img_wizard,
+					game->st_player.x * 128, game->st_player.y * 128);
+			}
 			c++;
 		}
 		l++;
@@ -103,7 +109,4 @@ void	draw(t_game *game)
 {
 	draw_map(game);
 	draw_item(game);
-	mlx_put_image_to_window(game->st_mlx->mlx_ptr,
-		game->st_mlx->win_ptr, game->st_mlx->img_wizard,
-		game->st_player.x * 128, game->st_player.y * 128);
 }

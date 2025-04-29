@@ -6,7 +6,7 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 12:57:01 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/04/09 16:38:50 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/04/29 15:46:33 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,26 +53,30 @@ void	check_move(t_game *game, int key)
 			game->st_player.x--;
 }
 
+void	add_move(t_game *game)
+{
+	game->st_player.nb_move++;
+	ft_printf("moves : %i\n", game->st_player.nb_move);
+}
+
 void	move_cunter(t_game *game, int key)
 {
 	if (key == 119)
 		if (is_wall(game->st_map, game->st_player.y - 1,
 				game->st_player.x) == 2)
-			game->st_player.nb_move++;
+			add_move(game);
 	if (key == 100)
 		if (is_wall(game->st_map, game->st_player.y,
 				game->st_player.x + 1) == 2)
-			game->st_player.nb_move++;
+			add_move(game);
 	if (key == 115)
 		if (is_wall(game->st_map, game->st_player.y + 1,
 				game->st_player.x) == 2)
-			game->st_player.nb_move++;
+			add_move(game);
 	if (key == 97)
 		if (is_wall(game->st_map, game->st_player.y,
 				game->st_player.x - 1) == 2)
-			game->st_player.nb_move++;
-	if (key == 119 || key == 100 || key == 115 || key == 97)
-		ft_printf("moves : %i\n", game->st_player.nb_move);
+			add_move(game);
 }
 
 int	keypresse(int key, t_game *game)

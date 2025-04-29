@@ -6,7 +6,7 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 15:51:41 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/04/09 16:33:49 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/04/24 14:52:47 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,4 @@ void	free_map(t_map *st_map)
 	free(st_map->id_wall);
 	free(st_map->id_floor);
 	free(st_map);
-}
-
-void	check_map_info(t_game *game, t_map *st_map)
-{
-	if (!st_map->path)
-		close_window(game, 0, NULL, EXIT_FAILURE);
-	if (!st_map->map)
-	{
-		free(st_map->path);
-		free(st_map);
-		close_window(game, 1, "Error\nthe map is empty\n", EXIT_FAILURE);
-	}
-	init_index_null(st_map);
 }

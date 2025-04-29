@@ -6,7 +6,7 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 15:12:53 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/04/09 16:37:55 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/04/29 16:37:54 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,6 @@
 #include <stdlib.h>
 #include "../minilibx-linux/mlx.h"
 #include <X11/X.h>
-
-int	check_extansion(char *path)
-{
-	size_t	i;
-
-	i = 0;
-	while (i <= 3)
-	{
-		if (i == 0 && path[ft_strlen(path - i)] != 'r')
-			return (0);
-		if (i == 1 && path[ft_strlen(path - i)] != 'e')
-			return (0);
-		if (i == 2 && path[ft_strlen(path - i)] != 'b')
-			return (0);
-		if (i == 3 && path[ft_strlen(path - i)] != '.')
-			return (0);
-		i++;
-	}
-	return (1);
-}
 
 void	init_game(t_game *game, char **argv)
 {

@@ -6,7 +6,7 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:24:45 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/04/09 16:38:32 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/04/29 16:18:47 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,12 +93,22 @@ int		check_wall(t_game *game);
 void	check_map_info(t_game *game, t_map *st_map);
 void	load_img2(t_game *game);
 void	check_img2(t_game *game);
+int		check_invalid_texture(t_game *game);
 
 /*========================================*/
 /*=            init function             =*/
 /*========================================*/
 
+t_map	*malloc_map(t_game *game, int map_fd, char *line, char *map_line);
 t_map	*pars(t_game *game, char *path);
+
+// in init_texture_id change :
+// st_map->id_wall = ft_strdup("1");
+// st_map->id_floor = ft_strdup("0PCE");
+// to :
+// st_map->id_wall = ft_strdup("12BWG");
+// st_map->id_floor = ft_strdup("0PCE3");
+// for more texture
 void	init_texture_id(t_game *game, t_map *st_map);
 void	init_player(t_game *game);
 void	init_info(t_game *game, t_map *st_map, int initp);

@@ -6,7 +6,7 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 14:54:29 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/04/10 14:31:04 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/04/29 16:34:33 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ t_map	*pars(t_game *game, char *path)
 		free(line);
 		line = get_next_line(ber);
 	}
-	st_map = malloc(sizeof(t_map));
-	st_map->map = ft_split(map_line, '\n');
+	st_map = malloc_map(game, ber, line, map_line);
 	st_map->path = ft_strdup(path);
 	close(ber);
 	free(line);
@@ -104,8 +103,8 @@ void	init_info(t_game *game, t_map *st_map, int initp)
 
 void	init_texture_id(t_game *game, t_map *st_map)
 {
-	st_map->id_wall = ft_strdup("12BWG");
-	st_map->id_floor = ft_strdup("0PCE3");
+	st_map->id_wall = ft_strdup("1");
+	st_map->id_floor = ft_strdup("0PCE");
 	if (!st_map->id_floor || !st_map->id_wall)
 		close_window(game, 0, NULL, EXIT_FAILURE);
 }

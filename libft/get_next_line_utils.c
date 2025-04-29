@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/16 13:16:27 by ********          #+#    #+#             */
-/*   Updated: 2025/04/04 18:23:43 by gchauvet         ###   ########.fr       */
+/*   Created: 2024/12/16 13:16:27 by gchauvet          #+#    #+#             */
+/*   Updated: 2025/04/29 16:58:19 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,9 @@ char	*ft_strjoin_gnl(char *s1, char *s2)
 		j++;
 	}
 	new_s[i] = '\0';
-	return (free(s1), new_s);
+	if (s1)
+		free(s1);
+	return (new_s);
 }
 
 int	ft_strchr_gnl(const char *s, int c)

@@ -6,7 +6,7 @@
 /*   By: gchauvet <gchauvet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 14:54:29 by gchauvet          #+#    #+#             */
-/*   Updated: 2025/04/29 17:01:12 by gchauvet         ###   ########.fr       */
+/*   Updated: 2025/04/29 17:33:55 by gchauvet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 
 int	check_map_line(char *map_line)
 {
+	if (!map_line)
+		return (0);
 	if (ft_strnstr(map_line, "\n\n", ft_strlen(map_line)))
 		return (1);
 	if (map_line[0] == '\n' || map_line[ft_strlen(map_line) - 1] == '\n')
